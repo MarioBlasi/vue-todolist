@@ -36,14 +36,30 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
-      todo: [
+      todos: [
         { text: "andare in palestra", done: false },
         { text: "acquistare quella moto", done: false },
-        { text: "ascoltare musica", done: false },
-        { text: "fare spesa", done: false },
+        { text: "ascoltare musica", done: true },
+        { text: "fare spesa", done: true },
         { text: "fare quel viaggio", done: false },
       ],
       newTodo: "",
     };
+  },
+  methods: {
+    addTodo() {
+      if (this.newTodo.trim() !== "") {
+        console.log("Aggiungo un nuovo todo");
+        this.todos.push({ text: this.newTodo, done: false });
+        this.newTodo = "";
+      }
+    },
+    removeTodo(index) {
+      console.log("rimuovo");
+      this.todos.splice(index, 1);
+    },
+    toggleDone(index) {
+      this.todos[index].done = !this.todos[index].done;
+    },
   },
 }).mount("#app");
