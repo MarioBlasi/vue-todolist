@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!--Font Awesome-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!--Font Awesome  6.4.0-->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <!--Css-->
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>Todo list</h1>
+      </header>
+
+      <main class="container">
+        <div class="add_tasks mb-3">
+          <div class="d-flex mb-3">
+            <input
+              class="form-control"
+              type="text"
+              v-model.trim="'newTask"
+              @keyup.enter="addTasks()"
+              placeholder="Type a task name"
+            />
+            <button @click="addTasks()" class="btn btn-outline-bark">
+              Add
+            </button>
+          </div>
+
+          <div class="alert alert-danger" role="alert" v-if="error">
+            <strong>{{error}}</strong>
+          </div>
+        </div>
+        <!-- add tasks -->
+
+        <div class="tasks">
+          <ul v-if="tasks.length > 0">
+            <li v-for="(task,index) in tanks" class="d-flex">
+              {{task}}
+              <div class="complete" @click="completeTask(index)">
+                <i class="fas fa-check-circle fa-sm fa-fw"></i>
+              </div>
+            </li>
+          </ul>
+          <p v-else>Nothing to do</p>
+        </div>
+      </main>
+      <footer></footer>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!--Vue.JS-->
+    <script src="./assets/js/app.js"></script>
+    <!-- JS -->
+  </body>
+</html>
