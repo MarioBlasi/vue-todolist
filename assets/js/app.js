@@ -26,35 +26,24 @@ cliccando sul testo dell'item, invertire il valore della proprietà done del tod
 
 */
 
+/*Questa volta però ogni todo sarà un oggetto,
+ formato da due proprietà:
+text, una stringa che indica il testo del todo
+done, un booleano (true/false) che indica se il todo è stato fatto oppure no*/
+
 const { createApp } = Vue;
 
 createApp({
   data() {
     return {
-      newTask: "",
-      error: null,
-      completed: [],
-      tasks: ["Learn HTML", "Learn CSS", "Learn JS", "Learn PHP"],
+      todo: [
+        { text: "andare in palestra", done: false },
+        { text: "acquistare quella moto", done: false },
+        { text: "ascoltare musica", done: false },
+        { text: "fare spesa", done: false },
+        { text: "fare quel viaggio", done: false },
+      ],
+      newTodo: "",
     };
-  },
-  methods: {
-    addTasks() {
-      console.log("add");
-      console.log(this.newTask);
-      console.log(this.newTask.length);
-
-      if (this.newTask.length > 5) {
-        this.tasks.unshift(this.newTask);
-        this.newTask = "";
-        this.error = null;
-      } else {
-        console.log("you can not");
-        this.error = "sorry about it";
-      }
-    },
-    completeTask(i) {
-      this.completed.push();
-      this.tasks.splice(i, 1);
-    },
   },
 }).mount("#app");
